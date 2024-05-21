@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS 그림판</title>
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
+    </head>
+    <body>
+        <canvas id="jsCanvas" class="canvas"></canvas>
+
+        <div class="controls">
+            <div class="controls_colors" id="JSColors">
+                <div class="controls_color jsColor" style="background: black"></div>
+                <div class="controls_color jsColor" style="background: white"></div>
+                <div class="controls_color jsColor" style="background: red"></div>
+                <div class="controls_color jsColor" style="background: orange"></div>
+                <div class="controls_color jsColor" style="background: yellow"></div>
+                <div class="controls_color jsColor" style="background: green"></div>
+                <div class="controls_color jsColor" style="background: blue"></div>
+                <div class="controls_color jsColor" style="background: navy"></div>
+                <div class="controls_color jsColor" style="background: purple"></div>
+            </div>
+        </div>
+
+        <div class="controls_range">
+            <input type="range" id="jsRange" min="0.5" max="10.0" value="2.5" step="0.1" />
+        </div>
+
+        <div class="controls_btns">
+            <button id="jsFill">Fill</button>
+            <button id="jsBrush">Brush</button>
+            <button id="jsEraser">Eraser</button>
+            <button id="jsSave">Save</button>
+        </div>
+
+        <div id="cursor" class="cursor"></div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
