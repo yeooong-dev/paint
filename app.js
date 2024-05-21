@@ -41,10 +41,28 @@ function onMouseMove(event) {
     }
 }
 
+function onTouchMove(event) {
+    const touch = event.touches[0];
+    const x = touch.clientX - canvas.offsetLeft;
+    const y = touch.clientY - canvas.offsetTop;
+
+    updateCursor(x, y);
+
+    if (!painting) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    } else {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    }
+    event.preventDefault();
+}
+
 function handleColorClick(event) {
     const color = event.target.style.backgroundColor;
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
+    cursor.style.borderColor = color;
 }
 
 function handleRangeChange(event) {
@@ -101,6 +119,10 @@ if (canvas) {
     canvas.addEventListener("mouseup", stopPainting); /* 페인팅 멈춤 */
     canvas.addEventListener("mouseleave", stopPainting); /* 페인팅 멈춤 */
     canvas.addEventListener("click", handleCanvasClick); /* 캔버스 클릭 시 색칠 */
+    canvas.addEventListener("touchmove", onTouchMove);
+    canvas.addEventListener("touchstart", startPainting);
+    canvas.addEventListener("touchend", stopPainting);
+    canvas.addEventListener("touchcancel", stopPainting);
 }
 
 Array.from(colors).forEach((color) => color.addEventListener("click", handleColorClick));
